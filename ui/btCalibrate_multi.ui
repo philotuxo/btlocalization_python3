@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>btCalibrate</class>
+ <widget class="QMainWindow" name="btCalibrate">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>748</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1024</width>
+    <height>748</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1024</width>
+    <height>748</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Calibration Tool For Multi Sensors</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="setLimitsButton">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>158</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Set</string>
+    </property>
+   </widget>
+   <widget class="QTreeWidget" name="dataTreeWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>30</y>
+      <width>181</width>
+      <height>401</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="selectionMode">
+     <enum>QAbstractItemView::MultiSelection</enum>
+    </property>
+    <property name="selectionBehavior">
+     <enum>QAbstractItemView::SelectItems</enum>
+    </property>
+    <property name="columnCount">
+     <number>1</number>
+    </property>
+    <attribute name="headerVisible">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="headerStretchLastSection">
+     <bool>false</bool>
+    </attribute>
+    <column>
+     <property name="text">
+      <string>Head</string>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>8</pointsize>
+      </font>
+     </property>
+    </column>
+   </widget>
+   <widget class="QCheckBox" name="aliasesBox">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>10</y>
+      <width>71</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="text">
+     <string>Aliases</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="setParityButton">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>117</y>
+      <width>21</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Measure a length of 1 meter on the map&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="text">
+     <string>Set</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="logBrowser">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>430</y>
+      <width>361</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="imageView">
+    <property name="geometry">
+     <rect>
+      <x>359</x>
+      <y>-1</y>
+      <width>661</width>
+      <height>721</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="pointTypeSelection">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>30</y>
+      <width>151</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="selectionRectVisible">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="metricBox">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>10</y>
+      <width>61</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text">
+     <string>Metric</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="noImageLabel">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>330</y>
+      <width>181</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="PlaceholderText">
+        <brush brushstyle="NoBrush">
+         <color alpha="128">
+          <red>255</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="PlaceholderText">
+        <brush brushstyle="NoBrush">
+         <color alpha="128">
+          <red>255</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>30</red>
+          <green>30</green>
+          <blue>40</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>20</red>
+          <green>19</green>
+          <blue>18</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="PlaceholderText">
+        <brush brushstyle="NoBrush">
+         <color alpha="128">
+          <red>255</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="text">
+     <string>No Image Loaded</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_histograms">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>190</y>
+      <width>181</width>
+      <height>241</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Histograms</string>
+    </property>
+    <widget class="QPushButton" name="button_prepare">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>130</y>
+       <width>61</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Prepare</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_rssi">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>121</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>RSSI</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_freq">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>90</y>
+       <width>121</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Frequency</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="button_reset">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>130</y>
+       <width>61</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Reset</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="button_RSSI_histogram">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>160</y>
+       <width>161</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Export RSSI Hist</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="button_Freq_histogram">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>220</y>
+       <width>161</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Export Freq Hist</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_mxrssi">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>121</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Mx RSSI</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="button_MxRSSI_histogram">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>180</y>
+       <width>161</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Export MxRSSI Hist</string>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="spinMxRssiWindow">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>50</y>
+       <width>51</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="decimals">
+      <number>2</number>
+     </property>
+     <property name="maximum">
+      <double>10.000000000000000</double>
+     </property>
+     <property name="singleStep">
+      <double>0.250000000000000</double>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_mxmdrssi">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>121</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Mx Md RSSI</string>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="spinMxMdRssiWindow">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>70</y>
+       <width>51</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="decimals">
+      <number>2</number>
+     </property>
+     <property name="maximum">
+      <double>10.000000000000000</double>
+     </property>
+     <property name="singleStep">
+      <double>0.250000000000000</double>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="button_MxMdRSSI_histogram">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>200</y>
+       <width>161</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>9</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Export MxMdRSSI Hist</string>
+     </property>
+    </widget>
+   </widget>
+   <zorder>dataTreeWidget</zorder>
+   <zorder>aliasesBox</zorder>
+   <zorder>logBrowser</zorder>
+   <zorder>imageView</zorder>
+   <zorder>pointTypeSelection</zorder>
+   <zorder>setParityButton</zorder>
+   <zorder>setLimitsButton</zorder>
+   <zorder>metricBox</zorder>
+   <zorder>noImageLabel</zorder>
+   <zorder>groupBox_histograms</zorder>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1024</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <widget class="QMenu" name="menuData">
+    <property name="title">
+     <string>&amp;Import</string>
+    </property>
+    <addaction name="actionRead_MBD_File"/>
+    <addaction name="actionRead_MBD_Directory"/>
+    <addaction name="actionRead_HST_File"/>
+   </widget>
+   <widget class="QMenu" name="menuConfig">
+    <property name="title">
+     <string>&amp;Configuration</string>
+    </property>
+    <widget class="QMenu" name="menuParameters">
+     <property name="title">
+      <string>&amp;Parameters</string>
+     </property>
+     <addaction name="actionLoadParams"/>
+     <addaction name="actionSaveParams"/>
+    </widget>
+    <widget class="QMenu" name="menuDevices">
+     <property name="title">
+      <string>&amp;Devices</string>
+     </property>
+     <addaction name="actionLoadDevices"/>
+     <addaction name="actionRemoveDevices"/>
+    </widget>
+    <addaction name="menuParameters"/>
+    <addaction name="menuDevices"/>
+   </widget>
+   <widget class="QMenu" name="menuMap">
+    <property name="title">
+     <string>&amp;Map</string>
+    </property>
+    <widget class="QMenu" name="menuImage">
+     <property name="title">
+      <string>&amp;Image</string>
+     </property>
+     <addaction name="actionLoadImage"/>
+     <addaction name="actionClearImage"/>
+     <addaction name="actionRefresh"/>
+    </widget>
+    <addaction name="menuImage"/>
+    <addaction name="actionExport_View"/>
+   </widget>
+   <widget class="QMenu" name="menuTrajectory">
+    <property name="title">
+     <string>Tra&amp;jectory</string>
+    </property>
+    <addaction name="actionReadTrajectory"/>
+    <addaction name="actionShow_Trajectory"/>
+    <addaction name="actionHide_Trajectory"/>
+    <addaction name="actionRead_Estimations"/>
+    <addaction name="actionShow_Estimations"/>
+    <addaction name="actionHide_Estimations"/>
+   </widget>
+   <addaction name="menuData"/>
+   <addaction name="menuConfig"/>
+   <addaction name="menuMap"/>
+   <addaction name="menuTrajectory"/>
+  </widget>
+  <action name="actionRead_Files">
+   <property name="text">
+    <string>Read &amp;MBD Files</string>
+   </property>
+  </action>
+  <action name="actionClear_Image">
+   <property name="text">
+    <string>&amp;Clear Image</string>
+   </property>
+  </action>
+  <action name="actionLoad_Parameters">
+   <property name="text">
+    <string>Load Parameters</string>
+   </property>
+  </action>
+  <action name="actionLoad_Conversion">
+   <property name="text">
+    <string>Load Conversion</string>
+   </property>
+  </action>
+  <action name="actionClear_Beacons">
+   <property name="text">
+    <string>Clear Beacons</string>
+   </property>
+  </action>
+  <action name="actionLoadBeacons">
+   <property name="text">
+    <string>&amp;Load</string>
+   </property>
+  </action>
+  <action name="actionSaveBeacons">
+   <property name="text">
+    <string>&amp;Save</string>
+   </property>
+  </action>
+  <action name="actionLoadImage">
+   <property name="text">
+    <string>&amp;Load</string>
+   </property>
+  </action>
+  <action name="actionClearImage">
+   <property name="text">
+    <string>&amp;Clear</string>
+   </property>
+  </action>
+  <action name="actionSaveParams">
+   <property name="text">
+    <string>&amp;Save</string>
+   </property>
+  </action>
+  <action name="actionLoadParams">
+   <property name="text">
+    <string>&amp;Load</string>
+   </property>
+  </action>
+  <action name="actionLoadConversion">
+   <property name="text">
+    <string>&amp;Load</string>
+   </property>
+  </action>
+  <action name="actionClearConversion">
+   <property name="text">
+    <string>&amp;Clear</string>
+   </property>
+  </action>
+  <action name="actionSaveConversion">
+   <property name="text">
+    <string>&amp;Save</string>
+   </property>
+  </action>
+  <action name="actionRead_Trajectory">
+   <property name="text">
+    <string>Read Trajectory</string>
+   </property>
+  </action>
+  <action name="actionReadTrajectory">
+   <property name="text">
+    <string>&amp;Read Trajectory File</string>
+   </property>
+  </action>
+  <action name="actionShow_Trajectory">
+   <property name="text">
+    <string>&amp;Show Trajectory</string>
+   </property>
+  </action>
+  <action name="actionHide_Trajectory">
+   <property name="text">
+    <string>&amp;Hide Trajectory</string>
+   </property>
+  </action>
+  <action name="actionLoadDevices">
+   <property name="text">
+    <string>&amp;Load</string>
+   </property>
+  </action>
+  <action name="actionRefresh">
+   <property name="text">
+    <string>&amp;Refresh</string>
+   </property>
+  </action>
+  <action name="actionExport_View">
+   <property name="text">
+    <string>Export View</string>
+   </property>
+  </action>
+  <action name="actionRemoveDevices">
+   <property name="text">
+    <string>Remove</string>
+   </property>
+  </action>
+  <action name="actionRead_MBD_File">
+   <property name="text">
+    <string>MBD File</string>
+   </property>
+  </action>
+  <action name="actionRead_HST_File">
+   <property name="text">
+    <string>HST File (RSSI)</string>
+   </property>
+  </action>
+  <action name="actionRead_MBD_Directory">
+   <property name="text">
+    <string>MBD Directory</string>
+   </property>
+  </action>
+  <action name="actionRead_Estimations">
+   <property name="text">
+    <string>Read Estimations</string>
+   </property>
+  </action>
+  <action name="actionShow_Estimations">
+   <property name="text">
+    <string>Show Estimations</string>
+   </property>
+  </action>
+  <action name="actionHide_Estimations">
+   <property name="text">
+    <string>Hide Estimations</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
